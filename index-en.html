@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Amy Chen — GOAT × 拼多多 | 客服运营 × AI深度应用</title>
-<meta name="description" content="近7年客服运营管理经验，GOAT助理客服经理（2019-2025），拼多多BPO Vendor Manager（2025-2026）。AI深度使用者，自研10+客服领域AI技能。">
+<title>Amy Chen — GOAT × Temu | CX Operations × AI</title>
+<meta name="description" content="12 years in customer experience operations. GOAT Assistant CS Manager (2019-2025), PDD Temu BPO Vendor Manager (2025-2026). Deep AI practitioner with 10+ CX-focused AI skills.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -27,12 +27,12 @@
     --shadow-lg: 0 8px 24px rgba(0,0,0,0.10);
   }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  * { margin:0; padding:0; box-sizing: border-box; }
 
   html { scroll-behavior: smooth; }
 
   body {
-    font-family: 'Noto Sans SC', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
     color: var(--text);
     background: var(--bg);
     line-height: 1.75;
@@ -42,15 +42,6 @@
 
   a { color: var(--accent); text-decoration: none; }
   a:hover { color: var(--accent-deep); }
-
-  .lang-switch {
-    font-size: 0.82rem; font-weight: 600;
-    color: var(--accent); background: var(--accent-light);
-    border: 1px solid var(--accent); border-radius: 6px;
-    padding: 4px 12px; cursor: pointer; text-decoration: none;
-    transition: all 0.2s ease;
-  }
-  .lang-switch:hover { background: var(--accent); color: #fff; }
 
   /* ── Nav ── */
   .nav {
@@ -71,6 +62,14 @@
     font-size: 0.85rem; font-weight: 500;
   }
   .nav-links a:hover { color: var(--text); }
+  .lang-switch {
+    font-size: 0.82rem; font-weight: 600;
+    color: var(--accent); background: var(--accent-light);
+    border: 1px solid var(--accent); border-radius: 6px;
+    padding: 4px 12px; cursor: pointer; text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .lang-switch:hover { background: var(--accent); color: #fff; }
 
   /* ── Sections ── */
   .section { padding: 100px 28px; }
@@ -143,15 +142,6 @@
     text-align: center;
   }
 
-  /*
-   * 3只猫 — 远近层次感，完全不重叠：
-   *   c1 近景：大尺寸、贴底、z-index最高、跑最快（13s）
-   *   c2 中景：中尺寸、偏下、z-index中等、跑中速（29s）、从右出发
-   *   c3 远景：小尺寸、偏高、z-index最低、跑最慢（53s）、从左出发
-   * 时长全部取素数，互质 → 永不同步，不会周期性相遇
-   * 起始位置分散：c1=0%、c2=100%（从右出发）、c3=33%（delay算好）
-   * 垂直方向3个层次 → 即使x坐标相同，视觉上也不重叠
-   */
   .c1 {
     width: 110px; height: 100px;
     bottom: 0; left: 0;
@@ -165,7 +155,7 @@
     z-index: 2;
     filter: drop-shadow(1px 3px 4px rgba(0,0,0,0.13));
     animation: run-rl-2 29s ease-in-out infinite;
-    animation-delay: -14.5s;   /* 29 * 0.5 = 14.5 → 从50%（中间）开始往左跑 */
+    animation-delay: -14.5s;
   }
   .c3 {
     width: 70px; height: 64px;
@@ -173,12 +163,9 @@
     z-index: 1;
     filter: drop-shadow(1px 2px 3px rgba(0,0,0,0.10));
     animation: run-lr-3 53s ease-in-out infinite;
-    animation-delay: -17.5s;  /* 53 * 0.33 ≈ 17.5 → 从33%（左侧1/3）开始往右跑 */
+    animation-delay: -17.5s;
   }
 
-  /* ── 3只猫独立 keyframes（宽度不同，硬编码 calc 值） ── */
-
-  /* c1 近景 110px — run-lr-1 */
   @keyframes run-lr-1 {
     0%   { left: 0; transform: scaleX(1) scale(1,1) rotate(0deg) translateY(0); }
     3%   { transform: scaleX(1) scale(0.92,1.08) rotate(-3deg) translateY(-5px); }
@@ -213,7 +200,6 @@
     100% { left: 0; transform: scaleX(1) scale(1,1) rotate(0deg) translateY(0); }
   }
 
-  /* c2 中景 90px — run-rl-2（从右出发）*/
   @keyframes run-rl-2 {
     0%   { left: calc(100% - 90px); transform: scaleX(-1) scale(1,1) rotate(0deg) translateY(0); }
     3%   { transform: scaleX(-1) scale(0.92,1.08) rotate(3deg) translateY(-6px); }
@@ -246,7 +232,6 @@
     100% { left: calc(100% - 90px); transform: scaleX(-1) scale(1,1) rotate(0deg) translateY(0); }
   }
 
-  /* c3 远景 70px — run-lr-3 */
   @keyframes run-lr-3 {
     0%   { left: 0; transform: scaleX(1) scale(1,1) rotate(0deg) translateY(0); }
     3%   { transform: scaleX(1) scale(0.92,1.08) rotate(-3deg) translateY(-5px); }
@@ -588,20 +573,20 @@
   <div class="nav-inner">
     <div class="nav-logo">Amy Chen</div>
     <ul class="nav-links">
-      <li><a href="#projects">项目</a></li>
-      <li><a href="#about">关于</a></li>
-      <li><a href="#experience">经历</a></li>
-      <li><a href="#contact">联系</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
-    <a href="index-en.html" class="lang-switch">EN</a>
+    <a href="index.html" class="lang-switch">中文</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero" id="hero">
   <div class="section-inner">
-    <h1>Amy Chen — <em>客服行业12年</em>，<br>将实战经验与 AI 能力深度融合    </h1>
-    <p class="cat-caption">家有2宝 · 小黑 · 小八</p>
+    <h1>Amy Chen — <em>12 Years in CX</em>,<br>Where Operations Meets AI</h1>
+    <p class="cat-caption">Proud mom of 2 cats · Xiaohei · Xiaoba</p>
     <div class="cat-stage" aria-hidden="true">
       <img class="cat-runner c1" src="cat1-run.png" alt="" width="110" height="100">
       <img class="cat-runner c2" src="cat2b-run.png" alt="" width="110" height="100">
@@ -613,92 +598,91 @@
 <!-- PROJECTS -->
 <section class="section section-warm" id="projects">
   <div class="section-inner">
-    <h2 class="section-title reveal">项目</h2>
+    <h2 class="section-title reveal">Projects</h2>
     <p style="font-size: 0.93rem; color: var(--text-secondary); max-width: 600px; margin-bottom: 32px; line-height: 1.7;">
-      不只是做管理，也在持续学习新技能、输出专业内容。以下是我业余时间做的几个项目。
+      Beyond operations management, I continuously learn new skills and produce professional content. Here are a few projects I built in my spare time.
     </p>
 
-    <h3 class="section-subtitle" style="margin-top: 40px;">AI 技能工具</h3>
+    <h3 class="section-subtitle" style="margin-top: 40px;">AI Skills & Tools</h3>
     <p style="font-size: 0.9rem; color: var(--text-secondary); max-width: 600px; margin-bottom: 24px; line-height: 1.7;">
-      我把客服运营经验，训练成了10+个 AI 技能——让经验<strong>可复制、可调用</strong>，累计下载使用<strong>500+</strong>。
+      I've distilled my CX operations experience into <strong>10+ AI skills</strong> — making expertise <strong>reusable and callable</strong>, with <strong>500+</strong> downloads.
     </p>
     <div class="tools-grid">
 
       <div class="tool-card">
-        <h4>🏢 BPO运营顾问</h4>
-        <p>BPO全链路运营咨询：供应商选择、合同治理、离岸外包决策、海外团队管理</p>
+        <h4>🏢 BPO Operations Advisor</h4>
+        <p>End-to-end BPO consulting: vendor selection, contract governance, offshoring decisions, overseas team management</p>
       </div>
 
       <div class="tool-card">
-        <h4>🏗️ 0-1客服团队搭建</h4>
-        <p>从零搭建客服团队：模式选择（自营/外包/混合）、组织架构、HC规划</p>
+        <h4>🏗️ 0-1 CX Team Setup</h4>
+        <p>Build a CX team from scratch: in-house/outsourced/hybrid model selection, org design, HC planning</p>
       </div>
 
       <div class="tool-card">
-        <h4>📊 客服排班&业务量预测专家</h4>
-        <p>咨询量预测、HC预测、多班次排班方案生成</p>
+        <h4>📊 CX Workforce Planning</h4>
+        <p>Contact volume forecasting, HC prediction, multi-shift scheduling plan generation</p>
       </div>
 
       <div class="tool-card">
-        <h4>🎓 客服培训大师</h4>
-        <p>新人入职/在岗进阶/PIP改进三阶段培训材料自动生成，支持多行业</p>
+        <h4>🎓 CX Training Master</h4>
+        <p>3-stage training material auto-generation: onboarding, on-the-job upskilling, PIP improvement. Multi-industry support.</p>
       </div>
 
       <div class="tool-card">
-        <h4>💬 客服话术专家</h4>
-        <p>电话/在线/邮件/社交媒体四渠道话术，覆盖电商/SaaS/金融等全行业</p>
+        <h4>💬 CX Script Expert</h4>
+        <p>Scripts for phone/chat/email/social — 4 channels, e-commerce/SaaS/finance and more</p>
       </div>
 
       <div class="tool-card">
-        <h4>📈 客服数据一体化看板</h4>
-        <p>一体化绩效看板：满意度、响应时效、解决率等核心指标可视化</p>
+        <h4>📈 CX Data Dashboard</h4>
+        <p>All-in-one performance dashboard: CSAT, response time, resolution rate — key metrics visualized</p>
       </div>
 
       <div class="tool-card">
-        <h4>🔍 VOC 全链路分析看板</h4>
-        <p>客户声音全链路分析：主题聚类、情感分析、趋势追踪、行动闭环</p>
+        <h4>🔍 VOC Full-Chain Analysis</h4>
+        <p>Voice of Customer analysis: topic clustering, sentiment analysis, trend tracking, action loop</p>
       </div>
 
       <div class="tool-card">
-        <h4>🌐 多语言客服质检分析工具</h4>
-        <p>中英日韩四语种质检审计：合规风险识别、情绪分析、质检报告生成</p>
+        <h4>🌐 Multilingual CX QA Tool</h4>
+        <p>QA audit in Chinese/English/Japanese/Korean: compliance risk, sentiment analysis, QA report generation</p>
       </div>
 
       <div class="tool-card">
-        <h4>📰 客服行业前沿资讯播报</h4>
-        <p>国内外客服行业动态日报：自营+外包，电商/SaaS/金融/游戏全行业覆盖</p>
+        <h4>📰 CX Industry Daily Brief</h4>
+        <p>Daily CX industry updates: in-house + BPO, e-commerce/SaaS/finance/gaming coverage</p>
       </div>
 
     </div>
 
     <div class="tools-note">
-      <p>以上工具均为 WorkBuddy Skill，可在 <a href="https://skillhub.cn/dashboard" target="_blank" rel="noopener">SkillHub 技能市场 →</a> 搜索名称免费安装使用。</p>
+      <p>All tools are WorkBuddy Skills. Search by name in <a href="https://skillhub.cn/dashboard" target="_blank" rel="noopener">SkillHub Marketplace →</a> to install for free.</p>
     </div>
 
-    <h3 class="section-subtitle" style="margin-top: 48px;">其他项目</h3>
+    <h3 class="section-subtitle" style="margin-top: 48px;">Other Projects</h3>
 
     <div class="project-card">
-      <h3>🌐 面向外国人的中文学习网站</h3>
-      <span class="project-tag">全栈开发</span>
-      <p>独立设计并运用AI开发了一款面向外国用户的中文学习网站，涵盖拼音、词汇、对话、练习四大模块。纯英文界面，交互流畅，支持移动端适配。</p>
+      <h3>🌏 Chinese Learning Website for Non-Native Speakers</h3>
+      <span class="project-tag">Full-Stack Development</span>
+      <p>Independently designed and built a Chinese learning website for international users, covering pinyin, vocabulary, dialogue, and practice modules. Fully English UI, smooth interactions, mobile-responsive.</p>
       <ul>
-        <li>技术栈：HTML / CSS / JavaScript，GitHub Pages 部署</li>
-        <li>功能模块：拼音发音、词汇闪卡、情景对话、互动练习</li>
-        <li>项目链接：<a href="https://github.com/fg288nhjcw-hub/Learnchinese" target="_blank" rel="noopener">github.com/fg288nhjcw-hub/Learnchinese</a></li>
+        <li>Tech stack: HTML / CSS / JavaScript, deployed on GitHub Pages</li>
+        <li>Modules: pinyin pronunciation, vocabulary flashcards, scenario dialogues, interactive exercises</li>
+        <li>Project link: <a href="https://github.com/fg288nhjcw-hub/Learnchinese" target="_blank" rel="noopener">github.com/fg288nhjcw-hub/Learnchinese</a></li>
       </ul>
     </div>
 
     <div class="project-card">
-      <h3>📝 知乎 · 客服运营领域内容创作者</h3>
-      <span class="project-tag">内容输出</span>
-      <p>新号运营2周达到<strong>等级4</strong>，<strong>创作分5433</strong>（远超同等级均值）。</p>
+      <h3>📝 Zhihu · CX Operations Content Creator</h3>
+      <span class="project-tag">Content Output</span>
+      <p>New account reached <strong>Level 4</strong> in 2 weeks, <strong>创作分 5433</strong> (far above average for the same level).</p>
       <ul>
-        <li>内容方向：客服运营、BPO管理、团队管理、外包选型、质量体系、客服AI化</li>
+        <li>Content areas: CX operations, BPO management, team management, outsourcing selection, quality systems, AI in CX</li>
       </ul>
 
       <div class="zhihu-radar" style="margin-top: 24px; border-radius: 12px; overflow: hidden;">
         <svg viewBox="0 0 420 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:400px;display:block;margin:0 auto;">
-          <!-- 蓝色背景 -->
           <rect width="420" height="340" fill="#4A90D9" rx="12"/>
           <defs>
             <linearGradient id="radarBg" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -706,8 +690,6 @@
               <stop offset="100%" stop-color="#3B7DD8"/>
             </linearGradient>
           </defs>
-
-          <!-- 六边形网格 - 5层 -->
           <g stroke="rgba(255,255,255,0.18)" fill="none" stroke-width="1">
             <polygon points="210,40 330,90 330,210 210,260 90,210 90,90"/>
             <polygon points="210,65 297.5,102.5 297.5,197.5 210,235 122.5,197.5 122.5,102.5"/>
@@ -715,8 +697,6 @@
             <polygon points="210,115 232.5,127.5 232.5,172.5 210,185 187.5,172.5 187.5,127.5"/>
             <polygon points="210,140 200,145 200,157.5 210,160 220,157.5 220,145"/>
           </g>
-
-          <!-- 从中心到顶点的轴线 -->
           <g stroke="rgba(255,255,255,0.12)" stroke-width="1">
             <line x1="210" y1="160" x2="210" y2="40"/>
             <line x1="210" y1="160" x2="330" y2="90"/>
@@ -725,18 +705,12 @@
             <line x1="210" y1="160" x2="90" y2="210"/>
             <line x1="210" y1="160" x2="90" y2="90"/>
           </g>
-
-          <!-- 均值虚线区域 (等级4均值) -->
           <polygon points="210,120 265,130 260,185 210,200 150,180 148,128"
                    fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.4)"
                    stroke-width="1.5" stroke-dasharray="5,3"/>
-
-          <!-- 实际数据区域 -->
           <polygon points="210,72 286,108 274,192 210,218 138,188 134,118"
                    fill="rgba(255,255,255,0.22)" stroke="rgba(255,255,255,0.85)"
                    stroke-width="2"/>
-
-          <!-- 数据点 -->
           <g fill="#fff" r="3.5">
             <circle cx="210" cy="72" r="3.5"/>
             <circle cx="286" cy="108" r="3.5"/>
@@ -745,51 +719,36 @@
             <circle cx="138" cy="188" r="3.5"/>
             <circle cx="134" cy="118" r="3.5"/>
           </g>
-
-          <!-- 顶部标签 -->
           <text x="210" y="25" text-anchor="middle" fill="white" font-size="14" font-weight="700">1,608</text>
           <text x="210" y="42" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="11">创作活跃度</text>
-
-          <!-- 右上标签 -->
           <text x="342" y="86" text-anchor="start" fill="white" font-size="14" font-weight="700">308</text>
           <text x="342" y="103" text-anchor="start" fill="rgba(255,255,255,0.8)" font-size="11">社区成就分</text>
-
-          <!-- 右下标签 -->
           <text x="342" y="216" text-anchor="start" fill="white" font-size="14" font-weight="700">0</text>
           <text x="342" y="233" text-anchor="start" fill="rgba(255,255,255,0.8)" font-size="11">关注者亲密度</text>
-
-          <!-- 底部标签 -->
           <text x="210" y="280" text-anchor="middle" fill="white" font-size="14" font-weight="700">287</text>
           <text x="210" y="297" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="11">创作影响力</text>
-
-          <!-- 左下标签 -->
           <text x="78" y="216" text-anchor="end" fill="white" font-size="14" font-weight="700">2,410</text>
           <text x="78" y="233" text-anchor="end" fill="rgba(255,255,255,0.8)" font-size="11">内容优质分</text>
-
-          <!-- 左上标签 -->
           <text x="78" y="86" text-anchor="end" fill="white" font-size="14" font-weight="700">820</text>
           <text x="78" y="103" text-anchor="end" fill="rgba(255,255,255,0.8)" font-size="11">创作垂直度</text>
-
-          <!-- 图例 -->
           <line x1="70" y1="320" x2="110" y2="320" stroke="rgba(255,255,255,0.85)" stroke-width="2"/>
-          <text x="116" y="324" fill="rgba(255,255,255,0.85)" font-size="10">你的创作分数值</text>
-
+          <text x="116" y="324" fill="rgba(255,255,255,0.85)" font-size="10">Your Score</text>
           <line x1="230" y1="320" x2="270" y2="320" stroke="rgba(255,255,255,0.45)" stroke-width="1.5" stroke-dasharray="5,3"/>
-          <text x="276" y="324" fill="rgba(255,255,255,0.7)" font-size="10">同等级均值</text>
+          <text x="276" y="324" fill="rgba(255,255,255,0.7)" font-size="10">Level 4 Average</text>
         </svg>
       </div>
     </div>
 
     <div class="project-card">
-      <h3>📱 「开口」英语学习小程序</h3>
-      <span class="project-tag">产品实践</span>
-      <p>运用AI开发了英语口语练习的微信小程序。从产品定位、需求梳理到功能验收全链路。</p>
+      <h3>🗣️ "Open Mouth" English Speaking Mini-Program</h3>
+      <span class="project-tag">Product Practice</span>
+      <p>Used AI to build a WeChat mini-program for English speaking practice. Full lifecycle from product positioning and PRD to UAT.</p>
       <ul>
-        <li>平台：微信小程序</li>
-        <li>涉及：产品需求文档、用户体验设计、多轮迭代反馈</li>
+        <li>Platform: WeChat Mini-Program</li>
+        <li>Involves: product requirements, UX design, iterative feedback</li>
       </ul>
       <div style="margin-top: 16px;">
-        <img src="kaiqian-qrcode.png" alt="「开口」小程序二维码" style="width:180px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+        <img src="kaiqian-qrcode.png" alt="Open Mouth mini-program QR code" style="width:180px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
       </div>
     </div>
 
@@ -799,12 +758,12 @@
 <!-- ABOUT -->
 <section class="section section-white" id="about">
   <div class="section-inner">
-    <h2 class="section-title reveal">关于我</h2>
+    <h2 class="section-title reveal">About Me</h2>
     <div class="about-text">
-      <p>入行这些年，我对"客服"这件事的认知被反复打破和重建。</p>
-      <p>早期我觉得客服就是<strong>把问题解决好、把人管好</strong>——效率、质量、满意度，三个指标跑通就对了。后来带过自营团队，也接手过外包供应商，才发现客服运营的核心矛盾不是技术问题，而是<strong>如何在成本、质量、规模三者之间找到动态平衡</strong>。自营有控制力但弹性不足，外包灵活但质量难以把控——这不是选择题，是要持续做trade-off的运营题。</p>
-      <p>真正让我重新审视这个行业的是AI。在GOAT参与AI回复项目时，我第一次意识到：<strong>AI不是来替代客服的，是来释放客服的</strong>。那些重复性高、规则明确的场景交给机器，人去做机器做不到的事——判断、共情、处理异常。这个认知转变让我意识到，经验可以被工具化、被复制。一个客服管理者的价值，也从「自己能干」变成了<strong>「能让更多人干好」</strong>。</p>
-      <p>我现在对客服行业的判断很简单：<strong>未来不属于最会省钱的外包商，也不属于最懂话术的培训师，属于那些能把人效和AI效能拧成一股绳的人</strong>。我在找这样的机会，也在成为这样的人。</p>
+      <p>Over the years in this industry, my understanding of "customer service" has been repeatedly broken and rebuilt.</p>
+      <p>Early on, I thought CX was about <strong>solving problems well and managing people well</strong> — hit the three metrics (efficiency, quality, satisfaction) and you're good. Later, after leading in-house teams and taking over outsourced vendors, I realized the core tension of CX operations isn't a technical problem — it's <strong>finding the dynamic balance between cost, quality, and scale</strong>. In-house gives you control but lacks flexibility; outsourcing gives you flexibility but makes quality hard to control. This isn't a multiple-choice question; it's an operations problem that requires constant trade-offs.</p>
+      <p>What made me re-examine this industry was AI. Working on GOAT's AI reply project, I realized for the first time: <strong>AI isn't here to replace CX — it's here to free CX</strong>. Let machines handle repetitive, rule-based scenarios; let humans do what machines can't — judgment, empathy, handling exceptions. This shift made me realize that experience can be tooled and replicated. The value of a CX manager shifts from "I can do it myself" to <strong>"enabling others to do it well."</strong></p>
+      <p>My view of the industry now is simple: <strong>the future belongs not to the cheapest BPO, nor to the best script trainer — it belongs to those who can weave human efficiency and AI capability into one rope.</strong> I'm looking for that kind of opportunity, and becoming that kind of person.</p>
     </div>
   </div>
 </section>
@@ -812,7 +771,7 @@
 <!-- EXPERIENCE -->
 <section class="section section-warm" id="experience">
   <div class="section-inner">
-    <h2 class="section-title reveal">工作经历</h2>
+    <h2 class="section-title reveal">Experience</h2>
     <div class="timeline">
 
       <div class="timeline-item">
@@ -821,15 +780,15 @@
         <div class="timeline-role">Vendor Manager</div>
         <div class="timeline-company">
           <img class="timeline-company-logo" src="temu-logo.png" alt="Temu logo">
-          拼多多 · 产品部
-          <button class="company-info-btn" data-company="temu" onclick="openCompanyModal('temu')">ℹ 公司简介</button>
+          PDD Holdings · Product Dept.
+          <button class="company-info-btn" data-company="temu" onclick="openCompanyModal('temu')">ℹ About Company</button>
         </div>
         <div class="timeline-desc">
           <ul>
-            <li>全面管理日韩区域5个BPO外包团队的运营工作，团队规模150人</li>
-            <li>优化BPO绩效管理体系，推动热线与在线核心指标持续改善：CSAT从良好档提升至优秀档85%，质检均分90+，平均处理时效缩短2%-5%。所负责的日韩团队满意度站点内排名第一，超出站点均值3个百分点</li>
-            <li>主导BPO团队管理层招聘选拔（5-10人），达成100%到岗率</li>
-            <li>协同业务与WFM团队，负责越南新区外包管理与客服人员的招聘面试，完成约30场面试，保障新区域项目顺利上线</li>
+            <li>Managed 5 BPO outsourced teams in KR/JP regions, team size 150 people</li>
+            <li>Optimized BPO performance management system, drove continuous improvement in hotline and online key metrics: CSAT improved from good to excellent tier (85%), avg. quality score 90+, avg. handling time reduced by 2%-5%. KR/JP team satisfaction ranked #1 within the site, 3pp higher than site average</li>
+            <li>Led BPO management layer recruitment and selection (5-10 people), achieved 100% on-time arrival rate</li>
+            <li>Collaborated with business and WFM teams, responsible for Vietnam new-region outsourcing management and agent interviews, completed ~30 interviews, ensured smooth new-region project launch</li>
           </ul>
         </div>
       </div>
@@ -840,17 +799,17 @@
         <div class="timeline-role">Customer Service Manager</div>
         <div class="timeline-company">
           <img class="timeline-company-logo" src="goat-logo.png" alt="GOAT Group logo">
-          GOAT（高特）· 上海客服部
-          <button class="company-info-btn" data-company="goat" onclick="openCompanyModal('goat')">ℹ 公司简介</button>
+          GOAT · Shanghai CX Dept.
+          <button class="company-info-btn" data-company="goat" onclick="openCompanyModal('goat')">ℹ About Company</button>
         </div>
         <div class="timeline-desc">
           <ul>
-            <li>0-1搭建中国客服团队（70人），从招聘、培训到流程体系建立，完成团队从无到有的建设</li>
-            <li>负责海外菲律宾外包团队（200人）的日常运营管理，服务效率、质量、客户满意度持续达标并超额完成</li>
-            <li>2022年、2024年两次获年度最高绩效评级"Above and Beyond"（5分），多次收到总监公开表扬信</li>
-            <li>人才发展与团队建设：年均参与30名候选人面试，试用期通过率90%；通过成长计划与导师机制推动团队成员晋升至质检/培训/主管岗位</li>
-            <li>发起并主导GOAT CX Ambassador项目（2023-2024），搭建15+候选人的人才梯队，获美国总部高度认可并推广至美国客服体验部门</li>
-            <li>作为AI回复项目的核心贡献者，审核标注5000+邮件样本，显著提升AI回复准确率并降低错误率</li>
+            <li>Built China CX team (70 people) from 0 to 1: end-to-end recruitment, training, and process system establishment</li>
+            <li>Managed daily operations of overseas Philippines outsourced team (200 people); service efficiency, quality, and CSAT consistently met and exceeded targets</li>
+            <li>Received highest annual performance rating "Above and Beyond" (5/5) in 2022 and 2024; received multiple public commendation letters from Director</li>
+            <li>Talent development & team building: ~30 candidate interviews per year, probation pass rate 90%; promoted team members to QA/Training/Supervisor roles through growth plans and mentorship</li>
+            <li>Initiated and led GOAT CX Ambassador Program (2023-2024), built a 15+ person talent pipeline, highly recognized by US HQ and promoted to US CX experience team</li>
+            <li>As a core contributor to the AI Reply project, reviewed and annotated 5,000+ email samples, significantly improving AI reply accuracy and reducing error rates</li>
           </ul>
         </div>
       </div>
@@ -862,19 +821,19 @@
 <!-- CONTACT -->
 <section class="section section-warm" id="contact">
   <div class="section-inner">
-    <h2 class="section-title reveal">联系我</h2>
+    <h2 class="section-title reveal">Contact</h2>
     <p style="font-size: 0.93rem; color: var(--text-secondary); max-width: 520px; margin-bottom: 32px; line-height: 1.7;">
-      如果你在寻找一位懂客服、会用AI、还能带团队的运营管理者，欢迎联系我。
+      If you're looking for an operations manager who understands CX, knows how to use AI, and can lead teams — let's talk.
     </p>
     <div class="contact-info" style="text-align:center;font-size:1.05rem;line-height:2.2;color:var(--text-primary);background:#fff;border:1px solid var(--border);border-radius:10px;padding:32px;box-shadow:var(--shadow-sm);max-width:420px;margin:0 auto;">
       <p>📧 <a href="mailto:15862341636@163.com" style="color:var(--accent);text-decoration:none;font-weight:500;">15862341636@163.com</a></p>
-      <p>💬 微信：<span style="font-weight:600;">chenamy1992</span></p>
+      <p>💬 WeChat: <span style="font-weight:600;">chenamy1992</span></p>
     </div>
   </div>
 </section>
 
 <footer class="footer">
-  © 2026 <span>Amy Chen</span> — 客服运营管理，AI赋能，持续进化中
+  © 2026 <span>Amy Chen</span> — CX Operations, AI-Enabled, Always Evolving
 </footer>
 
 <script>
@@ -897,15 +856,15 @@
   var companyData = {
     temu: {
       name: 'Temu',
-      tag: '拼多多旗下 · 跨境电商平台',
+      tag: 'PDD Holdings · Cross-border E-commerce Platform',
       logo: 'temu-logo.png',
-      desc: '<p>Temu 是拼多多母公司 PDD Holdings 于2022年9月推出的跨境电商平台，主打极致性价比，覆盖服装、家居、电子产品、运动户外等全品类。</p><p>业务已拓展至美国、加拿大、澳大利亚、新西兰及欧洲多个市场。2023-2024年蝉联美国App Store购物类下载量第一，是全球增长最快的跨境电商平台之一。</p><p>平台采用"全托管"模式，由平台统一负责定价、营销、物流和售后，供应商只需专注生产与供货。</p>'
+      desc: '<p>Temu is a cross-border e-commerce platform launched by PDD Holdings in September 2022, focusing on extreme cost-effectiveness, covering apparel, home goods, electronics, sports & outdoors, and more.</p><p>Business has expanded to the US, Canada, Australia, New Zealand, and multiple European markets. In 2023-2024, Temu ranked #1 in shopping app downloads on the US App Store for two consecutive years, making it one of the fastest-growing cross-border e-commerce platforms globally.</p><p>The platform adopts a "fully managed" model, where the platform handles pricing, marketing, logistics, and after-sales uniformly, while suppliers focus solely on production and supply.</p>'
     },
     goat: {
       name: 'GOAT',
-      tag: '全球球鞋·潮牌交易平台',
+      tag: 'Global Sneaker & Streetwear Marketplace',
       logo: 'goat-logo.png',
-      desc: '<p>GOAT Group 成立于2015年，总部位于美国纽约，是全球领先的球鞋与潮流服饰交易平台。旗下拥有 GOAT 和 Alias 两个品牌，服务覆盖170+国家和地区。</p><p>平台以"正品保障"为核心竞争力，每笔订单均经过专业鉴定流程，杜绝假货。2021年完成3亿美元E轮融资，估值达39亿美元。</p><p>上海客服中心负责亚太区用户服务运营，是 GOAT 全球客服体系的重要组成部分。</p>'
+      desc: '<p>GOAT Group was founded in 2015, headquartered in New York City, and is the world\'s leading sneaker and streetwear trading platform. It operates two brands: GOAT and Alias, serving 170+ countries and regions.</p><p>The platform\'s core competitive edge is "authenticity guarantee" — every order goes through a professional authentication process to eliminate counterfeits. In 2021, GOAT raised $300M in Series E funding, reaching a $3.9B valuation.</p><p>The Shanghai CX center is responsible for APAC user service operations and is an important part of GOAT\'s global CX system.</p>'
     }
   };
 
@@ -933,7 +892,7 @@
 <!-- Company Profile Modal -->
 <div class="modal-overlay" id="company-modal" onclick="if(event.target===this)closeCompanyModal()">
   <div class="modal-box">
-    <button class="modal-close" onclick="closeCompanyModal()" aria-label="关闭">✕</button>
+    <button class="modal-close" onclick="closeCompanyModal()" aria-label="Close">✕</button>
     <div class="modal-company-header">
       <img class="modal-company-logo" id="modal-logo" src="" alt="">
       <div>
