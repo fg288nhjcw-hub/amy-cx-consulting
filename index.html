@@ -119,6 +119,16 @@
   .hero-highlights { display: flex; gap: 32px; flex-wrap: wrap; }
   .hero-highlight { font-size: 0.88rem; color: var(--text-muted); }
   .hero-highlight strong { color: var(--accent); font-weight: 600; }
+  .hero-resume-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    margin-top: 24px;
+    padding: 12px 28px;
+    background: var(--accent); color: #fff;
+    border-radius: var(--radius); font-size: 0.92rem; font-weight: 600;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: all 0.2s ease; box-shadow: var(--shadow-sm);
+  }
+  .hero-resume-btn:hover { background: var(--accent-deep); box-shadow: var(--shadow-md); transform: translateY(-1px); }
 
   /* ── Running Cats ── */
   .cat-stage {
@@ -606,6 +616,7 @@
       <img class="cat-runner c1" src="cat1-run.png" alt="" width="110" height="100">
       <img class="cat-runner c2" src="cat2b-run.png" alt="" width="110" height="100">
       <img class="cat-runner c3" src="cat4-run.png" alt="" width="110" height="100">
+      <a href="Amy-Chen-Resume.pdf" class="hero-resume-btn" download>📄 下载简历 PDF</a>
     </div>
   </div>
 </section>
