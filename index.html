@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amy Chen — GOAT × 拼多多 | 客服运营 × AI深度应用</title>
+<meta name="description" content="近7年客服运营管理经验，GOAT助理客服经理（2019-2025），拼多多BPO Vendor Manager（2025-2026）。AI深度使用者，自研10+客服领域AI技能。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fafafa;
+    --bg-warm: #fdf8f4;
+    --text: #1a1a1a;
+    --text-secondary: #555;
+    --text-muted: #999;
+    --border: #e5e5e5;
+    --accent: #c2704d;
+    --accent-deep: #a55b3a;
+    --accent-light: #fdf0e8;
+    --accent-blue: #3a7ca5;
+    --max-width: 880px;
+    --radius: 6px;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+    --shadow-lg: 0 8px 24px rgba(0,0,0,0.10);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans SC', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.75;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { color: var(--accent-deep); }
+
+  /* ── Nav ── */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(250,250,250,0.88);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  .nav-inner {
+    max-width: var(--max-width); margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 28px;
+  }
+  .nav-logo { font-weight: 700; font-size: 1.05rem; letter-spacing: -0.02em; color: var(--accent); }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a {
+    text-decoration: none; color: var(--text-secondary);
+    font-size: 0.85rem; font-weight: 500;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  /* ── Sections ── */
+  .section { padding: 100px 28px; }
+  .section-inner { max-width: var(--max-width); margin: 0 auto; }
+  .section-warm { background: linear-gradient(180deg, var(--bg-warm) 0%, #fef6ef 100%); }
+  .section-white { background: #fff; }
+  .section-title {
+    font-size: 1.55rem; font-weight: 700; letter-spacing: -0.03em;
+    margin-bottom: 32px; position: relative;
+  }
+  .section-title::after {
+    content: ''; display: block;
+    width: 32px; height: 3px; background: var(--accent);
+    border-radius: 2px; margin-top: 8px;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    padding: 180px 28px 120px;
+    background: linear-gradient(160deg, var(--bg-warm) 0%, #fdf3ea 30%, var(--bg) 70%);
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -40%; right: -15%;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(194,112,77,0.06) 0%, transparent 70%);
+    border-radius: 50%; pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; bottom: -20%; left: -10%;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(58,124,165,0.05) 0%, transparent 70%);
+    border-radius: 50%; pointer-events: none;
+  }
+  .hero h1 {
+    font-size: 2.65rem; font-weight: 700; letter-spacing: -0.04em;
+    line-height: 1.3; margin-bottom: 12px; position: relative; z-index: 1;
+  }
+  .hero h1 em { font-style: normal; color: var(--accent); }
+  .hero .tagline {
+    font-size: 1.1rem; color: var(--text-secondary);
+    max-width: 520px; line-height: 1.7; margin-bottom: 28px;
+  }
+  .hero-highlights { display: flex; gap: 32px; flex-wrap: wrap; }
+  .hero-highlight { font-size: 0.88rem; color: var(--text-muted); }
+  .hero-highlight strong { color: var(--accent); font-weight: 600; }
+
+  /* ── Running Cats ── */
+  .cat-stage {
+    position: relative;
+    height: 160px;
+    margin-top: 20px;
+    max-width: 760px;
+    overflow: hidden;
+  }
+  .cat-runner {
+    position: absolute;
+    object-fit: contain;
+    object-position: bottom center;
+    will-change: transform, left;
+  }
+  .cat-caption {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+    margin-top: 12px;
+    margin-bottom: 4px;
+    text-align: center;
+  }
+
+  /*
+   * 3只猫 — 远近层次感，完全不重叠：
+   *   c1 近景：大尺寸、贴底、z-index最高、跑最快（13s）
+   *   c2 中景：中尺寸、偏下、z-index中等、跑中速（29s）、从右出发
+   *   c3 远景：小尺寸、偏高、z-index最低、跑最慢（53s）、从左出发
+   * 时长全部取素数，互质 → 永不同步，不会周期性相遇
+   * 起始位置分散：c1=0%、c2=100%（从右出发）、c3=33%（delay算好）
+   * 垂直方向3个层次 → 即使x坐标相同，视觉上也不重叠
+   */
+  .c1 {
+    width: 110px; height: 100px;
+    bottom: 0; left: 0;
+    z-index: 3;
+    filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.18));
+    animation: run-lr-1 13s ease-in-out infinite;
+  }
+  .c2 {
+    width: 90px; height: 82px;
+    bottom: 22px;
+    z-index: 2;
+    filter: drop-shadow(1px 3px 4px rgba(0,0,0,0.13));
+    animation: run-rl-2 29s ease-in-out infinite;
+    animation-delay: -14.5s;   /* 29 * 0.5 = 14.5 → 从50%（中间）开始往左跑 */
+  }
+  .c3 {
+    width: 70px; height: 64px;
+    bottom: 44px;
+    z-index: 1;
+    filter: drop-shadow(1px 2px 3px rgba(0,0,0,0.10));
+    animation: run-lr-3 53s ease-in-out infinite;
+    animation-delay: -17.5s;  /* 53 * 0.33 ≈ 17.5 → 从33%（左侧1/3）开始往右跑 */
+  }
+
+  /* ── 3只猫独立 keyframes（宽度不同，硬编码 calc 值） ── */
+
+  /* c1 近景 110px — run-lr-1 */
+  @keyframes run-lr-1 {
+    0%   { left: 0; transform: scaleX(1) scale(1,1) rotate(0deg) translateY(0); }
+    3%   { transform: scaleX(1) scale(0.92,1.08) rotate(-3deg) translateY(-5px); }
+    6%   { transform: scaleX(1) scale(1,1) rotate(0deg) translateY(-14px); }
+    9%   { transform: scaleX(1) scale(1.06,0.92) rotate(2deg) translateY(-4px); }
+    12%  { transform: scaleX(1) scale(1.08,0.88) rotate(1deg) translateY(0); }
+    16%  { transform: scaleX(1) scale(0.92,1.08) rotate(-3deg) translateY(-5px); }
+    20%  { transform: scaleX(1) scale(1,1) rotate(0deg) translateY(-14px); }
+    24%  { transform: scaleX(1) scale(1.06,0.92) rotate(2deg) translateY(-4px); }
+    28%  { transform: scaleX(1) scale(1.08,0.88) rotate(1deg) translateY(0); }
+    32%  { transform: scaleX(1) scale(0.92,1.08) rotate(-3deg) translateY(-5px); }
+    36%  { transform: scaleX(1) scale(1,1) rotate(0deg) translateY(-14px); }
+    40%  { transform: scaleX(1) scale(1.06,0.92) rotate(2deg) translateY(-4px); }
+    44%  { transform: scaleX(1) scale(1.08,0.88) rotate(1deg) translateY(0); }
+    45%  { left: calc(100% - 110px); transform: scaleX(1) scale(1,1) rotate(0deg) translateY(0); }
+    48%  { left: calc(100% - 110px); transform: scaleX(1) scale(0.9,1.1) rotate(0deg) translateY(-10px); }
+    50%  { left: calc(100% - 110px); transform: scaleX(-1) scale(1,1) rotate(0deg) translateY(0); }
+    53%  { transform: scaleX(-1) scale(0.92,1.08) rotate(3deg) translateY(-5px); }
+    56%  { transform: scaleX(-1) scale(1,1) rotate(0deg) translateY(-14px); }
+    59%  { transform: scaleX(-1) scale(1.06,0.92) rotate(-2deg) translateY(-4px); }
+    62%  { transform: scaleX(-1) scale(1.08,0.88) rotate(-1deg) translateY(0); }
+    66%  { transform: scaleX(-1) scale(0.92,1.08) rotate(3deg) translateY(-5px); }
+    70%  { transform: scaleX(-1) scale(1,1) rotate(0deg) translateY(-14px); }
+    74%  { transform: scaleX(-1) scale(1.06,0.92) rotate(-2deg) translateY(-4px); }
+    78%  { transform: scaleX(-1) scale(1.08,0.88) rotate(-1deg) translateY(0); }
+    82%  { transform: scaleX(-1) scale(0.92,1.08) rotate(3deg) translateY(-5px); }
+    86%  { transform: scaleX(-1) scale(1,1) rotate(0deg) translateY(-14px); }
+    90%  { transform: scaleX(-1) scale(1.06,0.92) rotate(-2deg) translateY(-4px); }
+    94%  { transform: scaleX(-1) scale(1.08,0.88) rotate(-1deg) translateY(0); }
+    95%  { left: 0; transform: scaleX(-1) scale(1,1) rotate(0deg) translateY(0); }
+    98%  { left: 0; transform: scaleX(-1) scale(0.9,1.1) rotate(0deg) translateY(-10px); }
+    100% { left: 0; transform: scaleX(1) scale(1,1) rotate(0deg) translateY(0); }
+  }
+
+  /* c2 中景 90px — run-rl-2（从右出发）*/
+  @keyframes run-rl-2 {
+    0%   { left: calc(100% - 90px); transform: scaleX(-1) scale(1,1) rotate(0deg) translateY(0); }
+    3%   { transform: scaleX(-1) scale(0.92,1.08) rotate(3deg) translateY(-6px); }
+    7%   { transform: scaleX(-1) scale(1,1) rotate(0deg) translateY(-15px); }
+    11%  { transform: scaleX(-1) scale(1.06,0.92) rotate(-2deg) translateY(-5px); }
+    15%  { transform: scaleX(-1) scale(1.08,0.88) rotate(-1deg) translateY(0); }
+    19%  { transform: scaleX(-1) scale(0.92,1.08) rotate(3deg) translateY(-6px); }
+    23%  { transform: scaleX(-1) scale(1,1) rotate(0deg) translateY(-15px); }
+    27%  { transform: scaleX(-1) scale(1.06,0.92) rotate(-2deg) translateY(-5px); }
+    31%  { transform: scaleX(-1) scale(1.08,0.88) rotate(-1deg) translateY(0); }
+    35%  { transform: scaleX(-1) scale(0.92,1.08) rotate(3deg) translateY(-6px); }
+    39%  { transform: scaleX(-1) scale(1,1) rotate(0deg) translateY(-15px); }
+    43%  { transform: scaleX(-1) scale(1.06,0.92) rotate(-2deg) translateY(-5px); }
+    45%  { left: 0; transform: scaleX(-1) scale(1.08,0.88) rotate(-1deg) translateY(0); }
+    48%  { left: 0; transform: scaleX(-1) scale(0.9,1.1) rotate(0deg) translateY(-10px); }
+    50%  { left: 0; transform: scaleX(1) scale(1,1) rotate(0deg) translateY(0); }
+    53%  { transform: scaleX(1) scale(0.92,1.08) rotate(-3deg) translateY(-6px); }
+    57%  { transform: scaleX(1) scale(1,1) rotate(0deg) translateY(-15px); }
+    61%  { transform: scaleX(1) scale(1.06,0.92) rotate(2deg) translateY(-5px); }
+    65%  { transform: scaleX(1) scale(1.08,0.88) rotate(1deg) translateY(0); }
+    69%  { transform: scaleX(1) scale(0.92,1.08) rotate(-3deg) translateY(-6px); }
+    73%  { transform: scaleX(1) scale(1,1) rotate(0deg) translateY(-15px); }
+    77%  { transform: scaleX(1) scale(1.06,0.92) rotate(2deg) translateY(-5px); }
+    81%  { transform: scaleX(1) scale(1.08,0.88) rotate(1deg) translateY(0); }
+    85%  { transform: scaleX(1) scale(0.92,1.08) rotate(-3deg) translateY(-6px); }
+    89%  { transform: scaleX(1) scale(1,1) rotate(0deg) translateY(-15px); }
+    93%  { transform: scaleX(1) scale(1.06,0.92) rotate(2deg) translateY(-5px); }
+    95%  { left: calc(100% - 90px); transform: scaleX(1) scale(1.08,0.88) rotate(1deg) translateY(0); }
+    98%  { left: calc(100% - 90px); transform: scaleX(1) scale(0.9,1.1) rotate(0deg) translateY(-10px); }
+    100% { left: calc(100% - 90px); transform: scaleX(-1) scale(1,1) rotate(0deg) translateY(0); }
+  }
+
+  /* c3 远景 70px — run-lr-3 */
+  @keyframes run-lr-3 {
+    0%   { left: 0; transform: scaleX(1) scale(1,1) rotate(0deg) translateY(0); }
+    3%   { transform: scaleX(1) scale(0.92,1.08) rotate(-3deg) translateY(-5px); }
+    6%   { transform: scaleX(1) scale(1,1) rotate(0deg) translateY(-14px); }
+    9%   { transform: scaleX(1) scale(1.06,0.92) rotate(2deg) translateY(-4px); }
+    12%  { transform: scaleX(1) scale(1.08,0.88) rotate(1deg) translateY(0); }
+    16%  { transform: scaleX(1) scale(0.92,1.08) rotate(-3deg) translateY(-5px); }
+    20%  { transform: scaleX(1) scale(1,1) rotate(0deg) translateY(-14px); }
+    24%  { transform: scaleX(1) scale(1.06,0.92) rotate(2deg) translateY(-4px); }
+    28%  { transform: scaleX(1) scale(1.08,0.88) rotate(1deg) translateY(0); }
+    32%  { transform: scaleX(1) scale(0.92,1.08) rotate(-3deg) translateY(-5px); }
+    36%  { transform: scaleX(1) scale(1,1) rotate(0deg) translateY(-14px); }
+    40%  { transform: scaleX(1) scale(1.06,0.92) rotate(2deg) translateY(-4px); }
+    44%  { transform: scaleX(1) scale(1.08,0.88) rotate(1deg) translateY(0); }
+    45%  { left: calc(100% - 70px); transform: scaleX(1) scale(1,1) rotate(0deg) translateY(0); }
+    48%  { left: calc(100% - 70px); transform: scaleX(1) scale(0.9,1.1) rotate(0deg) translateY(-10px); }
+    50%  { left: calc(100% - 70px); transform: scaleX(-1) scale(1,1) rotate(0deg) translateY(0); }
+    53%  { transform: scaleX(-1) scale(0.92,1.08) rotate(3deg) translateY(-5px); }
+    56%  { transform: scaleX(-1) scale(1,1) rotate(0deg) translateY(-14px); }
+    59%  { transform: scaleX(-1) scale(1.06,0.92) rotate(-2deg) translateY(-4px); }
+    62%  { transform: scaleX(-1) scale(1.08,0.88) rotate(-1deg) translateY(0); }
+    66%  { transform: scaleX(-1) scale(0.92,1.08) rotate(3deg) translateY(-5px); }
+    70%  { transform: scaleX(-1) scale(1,1) rotate(0deg) translateY(-14px); }
+    74%  { transform: scaleX(-1) scale(1.06,0.92) rotate(-2deg) translateY(-4px); }
+    78%  { transform: scaleX(-1) scale(1.08,0.88) rotate(-1deg) translateY(0); }
+    82%  { transform: scaleX(-1) scale(0.92,1.08) rotate(3deg) translateY(-5px); }
+    86%  { transform: scaleX(-1) scale(1,1) rotate(0deg) translateY(-14px); }
+    90%  { transform: scaleX(-1) scale(1.06,0.92) rotate(-2deg) translateY(-4px); }
+    94%  { transform: scaleX(-1) scale(1.08,0.88) rotate(-1deg) translateY(0); }
+    95%  { left: 0; transform: scaleX(-1) scale(1,1) rotate(0deg) translateY(0); }
+    98%  { left: 0; transform: scaleX(-1) scale(0.9,1.1) rotate(0deg) translateY(-10px); }
+    100% { left: 0; transform: scaleX(1) scale(1,1) rotate(0deg) translateY(0); }
+  }
+
+  /* ── Experience Timeline ── */
+  .timeline { position: relative; padding-left: 36px; border-left: 2px solid var(--border); margin-left: 8px; }
+  .timeline-item {
+    position: relative; margin-bottom: 48px;
+    background: #fff; border: 1px solid var(--border);
+    border-radius: 10px; padding: 24px;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.25s ease;
+  }
+  .timeline-item:last-child { margin-bottom: 0; }
+  .timeline-item:hover { box-shadow: var(--shadow-md); }
+  .timeline-dot {
+    position: absolute; left: -49px; top: 28px;
+    width: 12px; height: 12px; background: var(--accent);
+    border-radius: 50%; border: 3px solid var(--bg-warm);
+    box-shadow: 0 0 0 4px rgba(194,112,77,0.12);
+  }
+  .timeline-period {
+    font-size: 0.8rem; font-weight: 600; color: var(--accent);
+    text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px;
+  }
+  .timeline-role { font-size: 1.1rem; font-weight: 700; margin-bottom: 2px; }
+  .timeline-company { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 6px; display: flex; align-items: center; gap: 10px; }
+  .timeline-company-logo { height: 28px; width: auto; flex-shrink: 0; border-radius: 6px; object-fit: contain; }
+  .company-info-btn {
+    display: inline-flex; align-items: center; gap: 3px;
+    margin-left: 10px; padding: 2px 9px;
+    font-size: 0.72rem; font-weight: 500; color: var(--text-muted);
+    background: transparent; border: 1px solid var(--border); border-radius: 10px;
+    cursor: pointer; transition: all 0.2s ease; vertical-align: middle;
+  }
+  .company-info-btn:hover { color: var(--accent); border-color: var(--accent); background: var(--accent-light); }
+  .timeline-desc { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; }
+
+  /* ── Company Modal ── */
+  .modal-overlay {
+    position: fixed; inset: 0; z-index: 1000;
+    background: rgba(0,0,0,0.45); backdrop-filter: blur(4px);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none; transition: opacity 0.25s ease;
+  }
+  .modal-overlay.active { opacity: 1; pointer-events: auto; }
+  .modal-box {
+    background: #fff; border-radius: 14px; padding: 36px 32px; max-width: 480px; width: 90%;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.18); position: relative;
+    transform: translateY(16px); transition: transform 0.25s ease;
+  }
+  .modal-overlay.active .modal-box { transform: translateY(0); }
+  .modal-close {
+    position: absolute; top: 14px; right: 16px;
+    background: none; border: none; font-size: 1.3rem; color: var(--text-muted);
+    cursor: pointer; line-height: 1; padding: 4px 8px; border-radius: 6px;
+  }
+  .modal-close:hover { background: var(--bg); color: var(--text); }
+  .modal-company-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .modal-company-logo { height: 36px; width: auto; object-fit: contain; }
+  .modal-company-name { font-size: 1.15rem; font-weight: 700; color: var(--text); }
+  .modal-company-tag { font-size: 0.75rem; color: var(--accent); background: var(--accent-light); padding: 2px 8px; border-radius: 4px; font-weight: 500; }
+  .modal-company-body { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.75; }
+  .modal-company-body p { margin-bottom: 10px; }
+  .timeline-desc ul { padding-left: 18px; }
+  .timeline-desc li { margin-bottom: 4px; }
+  .timeline-desc li::marker { color: var(--accent); }
+
+  /* ── Tools Grid ── */
+  .tools-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 14px;
+  }
+  .tool-card {
+    padding: 22px 20px; border: 1px solid var(--border);
+    border-radius: 10px; background: #fff;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.25s ease;
+  }
+  .tool-card:hover {
+    border-color: var(--accent);
+    background: var(--accent-light);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+  .tool-card h4 { font-size: 0.92rem; font-weight: 600; margin-bottom: 4px; color: var(--accent-blue); }
+  .tool-card p { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.55; }
+
+  .tools-note {
+    margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--border);
+    text-align: center; font-size: 0.84rem; color: var(--text-secondary);
+  }
+  .tools-note a { color: var(--accent); font-weight: 600; }
+  .tools-note a:hover { color: var(--accent-deep); }
+
+  /* ── Projects ── */
+  .project-card {
+    padding: 28px; border: 1px solid var(--border);
+    border-radius: 10px; background: #fff;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 18px;
+    transition: all 0.25s ease;
+  }
+  .project-card:hover {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+  .project-card h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 4px; }
+  .project-card .project-tag {
+    display: inline-block; font-size: 0.72rem; font-weight: 600;
+    color: var(--accent); background: var(--accent-light);
+    padding: 2px 10px; border-radius: 3px; margin-bottom: 10px;
+  }
+  .project-card p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.65; }
+  .project-card ul { padding-left: 0; list-style: none; margin-top: 10px; }
+  .project-card li { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 3px; }
+  .project-card li::before { content: '▸ '; color: var(--accent); font-size: 0.7rem; }
+
+  /* ── About ── */
+  .about-text {
+    font-size: 0.95rem; color: var(--text-secondary);
+    line-height: 1.9; max-width: 680px;
+    background: #fff; border: 1px solid var(--border);
+    border-radius: 10px; padding: 36px 32px;
+    box-shadow: var(--shadow-sm);
+  }
+  .about-text p { margin-bottom: 18px; transition: none; }
+  .about-text p:last-child { margin-bottom: 0; }
+  .about-text strong { color: var(--text); font-weight: 600; }
+
+  .section-subtitle {
+    font-size: 1.15rem; font-weight: 600; color: var(--text);
+    padding-bottom: 8px; border-bottom: 1px solid var(--border);
+  }
+
+  /* ── Contact ── */
+  .contact-form { max-width: 520px; }
+  .form-group { margin-bottom: 18px; }
+  .form-group label {
+    display: block; font-size: 0.84rem; font-weight: 600; margin-bottom: 5px;
+  }
+  .form-group label .req { color: #d00; }
+  .form-group input, .form-group textarea {
+    width: 100%; padding: 10px 14px;
+    border: 1px solid var(--border); border-radius: var(--radius);
+    font-size: 0.88rem; font-family: inherit; color: var(--text);
+    background: #fff; resize: vertical;
+    transition: border-color 0.2s;
+  }
+  .form-group input:focus, .form-group textarea:focus {
+    outline: none; border-color: var(--accent);
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 11px 26px; border-radius: var(--radius);
+    font-size: 0.88rem; font-weight: 600; cursor: pointer;
+    border: none; transition: all 0.15s; font-family: inherit;
+  }
+  .btn-primary {
+    background: var(--accent); color: #fff;
+  }
+  .btn-primary:hover { background: var(--accent-deep); }
+  .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+  .form-note { font-size: 0.78rem; color: var(--text-muted); margin-top: 12px; }
+  .form-success { padding: 16px 0; }
+  .form-success h3 { font-size: 1.05rem; margin-bottom: 4px; }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center; padding: 40px 28px;
+    color: var(--text-muted); font-size: 0.82rem;
+    background: var(--bg-warm); border-top: 1px solid var(--border);
+  }
+  .footer span { color: var(--accent); font-weight: 600; }
+
+  /* ── Animations ── */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible {
+    opacity: 1; transform: translateY(0);
+  }
+
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .hero h1 { font-size: 1.85rem; }
+    .hero { padding: 130px 22px 80px; }
+    .section { padding: 65px 22px; }
+    .timeline { padding-left: 24px; margin-left: 4px; }
+    .timeline-dot { left: -36px; top: 28px; }
+    .timeline-item { padding: 18px 16px; }
+    .tools-grid { grid-template-columns: 1fr; }
+    .hero-highlights { gap: 20px; }
+    .about-text { padding: 24px 20px; }
+    .cat-stage { height: 120px; margin-top: 16px; }
+    .c1 { width: 80px; height: 72px; bottom: 0;   z-index: 3; animation: run-lr-1-m 13s ease-in-out infinite; }
+    .c2 { width: 65px; height: 59px; bottom: 16px; z-index: 2; animation: run-rl-2-m 29s ease-in-out infinite; animation-delay: -14.5s; }
+    .c3 { width: 50px; height: 46px; bottom: 32px; z-index: 1; animation: run-lr-3-m 53s ease-in-out infinite; animation-delay: -17.5s; }
+    @keyframes run-lr-1-m {
+      0%   { left: 0; transform: scaleX(1) scale(1,1) rotate(0deg) translateY(0); }
+      3%   { transform: scaleX(1) scale(0.93,1.07) rotate(-2deg) translateY(-3px); }
+      6%   { transform: scaleX(1) scale(1,1) rotate(0deg) translateY(-10px); }
+      9%   { transform: scaleX(1) scale(1.05,0.94) rotate(1.5deg) translateY(-3px); }
+      12%  { transform: scaleX(1) scale(1.07,0.9) rotate(1deg) translateY(0); }
+      16%  { transform: scaleX(1) scale(0.93,1.07) rotate(-2deg) translateY(-3px); }
+      20%  { transform: scaleX(1) scale(1,1) rotate(0deg) translateY(-10px); }
+      24%  { transform: scaleX(1) scale(1.05,0.94) rotate(1.5deg) translateY(-3px); }
+      28%  { transform: scaleX(1) scale(1.07,0.9) rotate(1deg) translateY(0); }
+      32%  { transform: scaleX(1) scale(0.93,1.07) rotate(-2deg) translateY(-3px); }
+      36%  { transform: scaleX(1) scale(1,1) rotate(0deg) translateY(-10px); }
+      40%  { transform: scaleX(1) scale(1.05,0.94) rotate(1.5deg) translateY(-3px); }
+      44%  { transform: scaleX(1) scale(1.07,0.9) rotate(1deg) translateY(0); }
+      45%  { left: calc(100% - 80px); transform: scaleX(1) scale(1,1) rotate(0deg) translateY(0); }
+      48%  { left: calc(100% - 80px); transform: scaleX(1) scale(0.91,1.09) rotate(0deg) translateY(-7px); }
+      50%  { left: calc(100% - 80px); transform: scaleX(-1) scale(1,1) rotate(0deg) translateY(0); }
+      53%  { transform: scaleX(-1) scale(0.93,1.07) rotate(2deg) translateY(-3px); }
+      56%  { transform: scaleX(-1) scale(1,1) rotate(0deg) translateY(-10px); }
+      59%  { transform: scaleX(-1) scale(1.05,0.94) rotate(-1.5deg) translateY(-3px); }
+      62%  { transform: scaleX(-1) scale(1.07,0.9) rotate(-1deg) translateY(0); }
+      66%  { transform: scaleX(-1) scale(0.93,1.07) rotate(2deg) translateY(-3px); }
+      70%  { transform: scaleX(-1) scale(1,1) rotate(0deg) translateY(-10px); }
+      74%  { transform: scaleX(-1) scale(1.05,0.94) rotate(-1.5deg) translateY(-3px); }
+      78%  { transform: scaleX(-1) scale(1.07,0.9) rotate(-1deg) translateY(0); }
+      82%  { transform: scaleX(-1) scale(0.93,1.07) rotate(2deg) translateY(-3px); }
+      86%  { transform: scaleX(-1) scale(1,1) rotate(0deg) translateY(-10px); }
+      90%  { transform: scaleX(-1) scale(1.05,0.94) rotate(-1.5deg) translateY(-3px); }
+      94%  { transform: scaleX(-1) scale(1.07,0.9) rotate(-1deg) translateY(0); }
+      95%  { left: 0; transform: scaleX(-1) scale(1,1) rotate(0deg) translateY(0); }
+      98%  { left: 0; transform: scaleX(-1) scale(0.91,1.09) rotate(0deg) translateY(-7px); }
+      100% { left: 0; transform: scaleX(1) scale(1,1) rotate(0deg) translateY(0); }
+    }
+    @keyframes run-rl-2-m {
+      0%   { left: calc(100% - 65px); transform: scaleX(-1) scale(1,1) rotate(0deg) translateY(0); }
+      3%   { transform: scaleX(-1) scale(0.93,1.07) rotate(2deg) translateY(-4px); }
+      7%   { transform: scaleX(-1) scale(1,1) rotate(0deg) translateY(-11px); }
+      11%  { transform: scaleX(-1) scale(1.05,0.94) rotate(-1.5deg) translateY(-3px); }
+      15%  { transform: scaleX(-1) scale(1.07,0.9) rotate(-1deg) translateY(0); }
+      19%  { transform: scaleX(-1) scale(0.93,1.07) rotate(2deg) translateY(-4px); }
+      23%  { transform: scaleX(-1) scale(1,1) rotate(0deg) translateY(-11px); }
+      27%  { transform: scaleX(-1) scale(1.05,0.94) rotate(-1.5deg) translateY(-3px); }
+      31%  { transform: scaleX(-1) scale(1.07,0.9) rotate(-1deg) translateY(0); }
+      35%  { transform: scaleX(-1) scale(0.93,1.07) rotate(2deg) translateY(-4px); }
+      39%  { transform: scaleX(-1) scale(1,1) rotate(0deg) translateY(-11px); }
+      43%  { transform: scaleX(-1) scale(1.05,0.94) rotate(-1.5deg) translateY(-3px); }
+      45%  { left: 0; transform: scaleX(-1) scale(1.07,0.9) rotate(-1deg) translateY(0); }
+      48%  { left: 0; transform: scaleX(-1) scale(0.91,1.09) rotate(0deg) translateY(-7px); }
+      50%  { left: 0; transform: scaleX(1) scale(1,1) rotate(0deg) translateY(0); }
+      53%  { transform: scaleX(1) scale(0.93,1.07) rotate(-2deg) translateY(-4px); }
+      57%  { transform: scaleX(1) scale(1,1) rotate(0deg) translateY(-11px); }
+      61%  { transform: scaleX(1) scale(1.05,0.94) rotate(1.5deg) translateY(-3px); }
+      65%  { transform: scaleX(1) scale(1.07,0.9) rotate(1deg) translateY(0); }
+      69%  { transform: scaleX(1) scale(0.93,1.07) rotate(-2deg) translateY(-4px); }
+      73%  { transform: scaleX(1) scale(1,1) rotate(0deg) translateY(-11px); }
+      77%  { transform: scaleX(1) scale(1.05,0.94) rotate(1.5deg) translateY(-3px); }
+      81%  { transform: scaleX(1) scale(1.07,0.9) rotate(1deg) translateY(0); }
+      85%  { transform: scaleX(1) scale(0.93,1.07) rotate(-2deg) translateY(-4px); }
+      89%  { transform: scaleX(1) scale(1,1) rotate(0deg) translateY(-11px); }
+      93%  { transform: scaleX(1) scale(1.05,0.94) rotate(1.5deg) translateY(-3px); }
+      95%  { left: calc(100% - 65px); transform: scaleX(1) scale(1.07,0.9) rotate(1deg) translateY(0); }
+      98%  { left: calc(100% - 65px); transform: scaleX(1) scale(0.91,1.09) rotate(0deg) translateY(-7px); }
+      100% { left: calc(100% - 65px); transform: scaleX(-1) scale(1,1) rotate(0deg) translateY(0); }
+    }
+    @keyframes run-lr-3-m {
+      0%   { left: 0; transform: scaleX(1) scale(1,1) rotate(0deg) translateY(0); }
+      3%   { transform: scaleX(1) scale(0.93,1.07) rotate(-2deg) translateY(-3px); }
+      6%   { transform: scaleX(1) scale(1,1) rotate(0deg) translateY(-10px); }
+      9%   { transform: scaleX(1) scale(1.05,0.94) rotate(1.5deg) translateY(-3px); }
+      12%  { transform: scaleX(1) scale(1.07,0.9) rotate(1deg) translateY(0); }
+      16%  { transform: scaleX(1) scale(0.93,1.07) rotate(-2deg) translateY(-3px); }
+      20%  { transform: scaleX(1) scale(1,1) rotate(0deg) translateY(-10px); }
+      24%  { transform: scaleX(1) scale(1.05,0.94) rotate(1.5deg) translateY(-3px); }
+      28%  { transform: scaleX(1) scale(1.07,0.9) rotate(1deg) translateY(0); }
+      32%  { transform: scaleX(1) scale(0.93,1.07) rotate(-2deg) translateY(-3px); }
+      36%  { transform: scaleX(1) scale(1,1) rotate(0deg) translateY(-10px); }
+      40%  { transform: scaleX(1) scale(1.05,0.94) rotate(1.5deg) translateY(-3px); }
+      44%  { transform: scaleX(1) scale(1.07,0.9) rotate(1deg) translateY(0); }
+      45%  { left: calc(100% - 50px); transform: scaleX(1) scale(1,1) rotate(0deg) translateY(0); }
+      48%  { left: calc(100% - 50px); transform: scaleX(1) scale(0.91,1.09) rotate(0deg) translateY(-7px); }
+      50%  { left: calc(100% - 50px); transform: scaleX(-1) scale(1,1) rotate(0deg) translateY(0); }
+      53%  { transform: scaleX(-1) scale(0.93,1.07) rotate(2deg) translateY(-3px); }
+      56%  { transform: scaleX(-1) scale(1,1) rotate(0deg) translateY(-10px); }
+      59%  { transform: scaleX(-1) scale(1.05,0.94) rotate(-1.5deg) translateY(-3px); }
+      62%  { transform: scaleX(-1) scale(1.07,0.9) rotate(-1deg) translateY(0); }
+      66%  { transform: scaleX(-1) scale(0.93,1.07) rotate(2deg) translateY(-3px); }
+      70%  { transform: scaleX(-1) scale(1,1) rotate(0deg) translateY(-10px); }
+      74%  { transform: scaleX(-1) scale(1.05,0.94) rotate(-1.5deg) translateY(-3px); }
+      78%  { transform: scaleX(-1) scale(1.07,0.9) rotate(-1deg) translateY(0); }
+      82%  { transform: scaleX(-1) scale(0.93,1.07) rotate(2deg) translateY(-3px); }
+      86%  { transform: scaleX(-1) scale(1,1) rotate(0deg) translateY(-10px); }
+      90%  { transform: scaleX(-1) scale(1.05,0.94) rotate(-1.5deg) translateY(-3px); }
+      94%  { transform: scaleX(-1) scale(1.07,0.9) rotate(-1deg) translateY(0); }
+      95%  { left: 0; transform: scaleX(-1) scale(1,1) rotate(0deg) translateY(0); }
+      98%  { left: 0; transform: scaleX(-1) scale(0.91,1.09) rotate(0deg) translateY(-7px); }
+      100% { left: 0; transform: scaleX(1) scale(1,1) rotate(0deg) translateY(0); }
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">Amy Chen</div>
+    <ul class="nav-links">
+      <li><a href="#projects">项目</a></li>
+      <li><a href="#about">关于</a></li>
+      <li><a href="#experience">经历</a></li>
+      <li><a href="#contact">联系</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="section-inner">
+    <h1>Amy Chen — <em>客服行业12年</em>，<br>将实战经验与 AI 能力深度融合    </h1>
+    <p class="cat-caption">家有2宝 · 小黑 · 小八</p>
+    <div class="cat-stage" aria-hidden="true">
+      <img class="cat-runner c1" src="cat1-run.png" alt="" width="110" height="100">
+      <img class="cat-runner c2" src="cat2b-run.png" alt="" width="110" height="100">
+      <img class="cat-runner c3" src="cat4-run.png" alt="" width="110" height="100">
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section section-warm" id="projects">
+  <div class="section-inner">
+    <h2 class="section-title reveal">项目</h2>
+    <p style="font-size: 0.93rem; color: var(--text-secondary); max-width: 600px; margin-bottom: 32px; line-height: 1.7;">
+      不只是做管理，也在持续学习新技能、输出专业内容。以下是我业余时间做的几个项目。
+    </p>
+
+    <h3 class="section-subtitle" style="margin-top: 40px;">AI 技能工具</h3>
+    <p style="font-size: 0.9rem; color: var(--text-secondary); max-width: 600px; margin-bottom: 24px; line-height: 1.7;">
+      我把客服运营经验，训练成了10+个 AI 技能——让经验<strong>可复制、可调用</strong>，累计下载使用<strong>500+</strong>。
+    </p>
+    <div class="tools-grid">
+
+      <div class="tool-card">
+        <h4>🏢 BPO运营顾问</h4>
+        <p>BPO全链路运营咨询：供应商选择、合同治理、离岸外包决策、海外团队管理</p>
+      </div>
+
+      <div class="tool-card">
+        <h4>🏗️ 0-1客服团队搭建</h4>
+        <p>从零搭建客服团队：模式选择（自营/外包/混合）、组织架构、HC规划</p>
+      </div>
+
+      <div class="tool-card">
+        <h4>📊 客服排班&业务量预测专家</h4>
+        <p>咨询量预测、HC预测、多班次排班方案生成</p>
+      </div>
+
+      <div class="tool-card">
+        <h4>🎓 客服培训大师</h4>
+        <p>新人入职/在岗进阶/PIP改进三阶段培训材料自动生成，支持多行业</p>
+      </div>
+
+      <div class="tool-card">
+        <h4>💬 客服话术专家</h4>
+        <p>电话/在线/邮件/社交媒体四渠道话术，覆盖电商/SaaS/金融等全行业</p>
+      </div>
+
+      <div class="tool-card">
+        <h4>📈 客服数据一体化看板</h4>
+        <p>一体化绩效看板：满意度、响应时效、解决率等核心指标可视化</p>
+      </div>
+
+      <div class="tool-card">
+        <h4>🔍 VOC 全链路分析看板</h4>
+        <p>客户声音全链路分析：主题聚类、情感分析、趋势追踪、行动闭环</p>
+      </div>
+
+      <div class="tool-card">
+        <h4>🌐 多语言客服质检分析工具</h4>
+        <p>中英日韩四语种质检审计：合规风险识别、情绪分析、质检报告生成</p>
+      </div>
+
+      <div class="tool-card">
+        <h4>📰 客服行业前沿资讯播报</h4>
+        <p>国内外客服行业动态日报：自营+外包，电商/SaaS/金融/游戏全行业覆盖</p>
+      </div>
+
+    </div>
+
+    <div class="tools-note">
+      <p>以上工具均为 WorkBuddy Skill，可在 <a href="https://skillhub.cn/dashboard" target="_blank" rel="noopener">SkillHub 技能市场 →</a> 搜索名称免费安装使用。</p>
+    </div>
+
+    <h3 class="section-subtitle" style="margin-top: 48px;">其他项目</h3>
+
+    <div class="project-card">
+      <h3>🌐 面向外国人的中文学习网站</h3>
+      <span class="project-tag">全栈开发</span>
+      <p>独立设计并运用AI开发了一款面向外国用户的中文学习网站，涵盖拼音、词汇、对话、练习四大模块。纯英文界面，交互流畅，支持移动端适配。</p>
+      <ul>
+        <li>技术栈：HTML / CSS / JavaScript，GitHub Pages 部署</li>
+        <li>功能模块：拼音发音、词汇闪卡、情景对话、互动练习</li>
+        <li>项目链接：<a href="https://github.com/fg288nhjcw-hub/Learnchinese" target="_blank" rel="noopener">github.com/fg288nhjcw-hub/Learnchinese</a></li>
+      </ul>
+    </div>
+
+    <div class="project-card">
+      <h3>📝 知乎 · 客服运营领域内容创作者</h3>
+      <span class="project-tag">内容输出</span>
+      <p>新号运营2周达到<strong>等级4</strong>，<strong>创作分5433</strong>（远超同等级均值）。</p>
+      <ul>
+        <li>内容方向：客服运营、BPO管理、团队管理、外包选型、质量体系、客服AI化</li>
+      </ul>
+
+      <div class="zhihu-radar" style="margin-top: 24px; border-radius: 12px; overflow: hidden;">
+        <svg viewBox="0 0 420 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:400px;display:block;margin:0 auto;">
+          <!-- 蓝色背景 -->
+          <rect width="420" height="340" fill="#4A90D9" rx="12"/>
+          <defs>
+            <linearGradient id="radarBg" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#4A90D9"/>
+              <stop offset="100%" stop-color="#3B7DD8"/>
+            </linearGradient>
+          </defs>
+
+          <!-- 六边形网格 - 5层 -->
+          <g stroke="rgba(255,255,255,0.18)" fill="none" stroke-width="1">
+            <polygon points="210,40 330,90 330,210 210,260 90,210 90,90"/>
+            <polygon points="210,65 297.5,102.5 297.5,197.5 210,235 122.5,197.5 122.5,102.5"/>
+            <polygon points="210,90 265,115 265,185 210,210 155,185 155,115"/>
+            <polygon points="210,115 232.5,127.5 232.5,172.5 210,185 187.5,172.5 187.5,127.5"/>
+            <polygon points="210,140 200,145 200,157.5 210,160 220,157.5 220,145"/>
+          </g>
+
+          <!-- 从中心到顶点的轴线 -->
+          <g stroke="rgba(255,255,255,0.12)" stroke-width="1">
+            <line x1="210" y1="160" x2="210" y2="40"/>
+            <line x1="210" y1="160" x2="330" y2="90"/>
+            <line x1="210" y1="160" x2="330" y2="210"/>
+            <line x1="210" y1="160" x2="210" y2="260"/>
+            <line x1="210" y1="160" x2="90" y2="210"/>
+            <line x1="210" y1="160" x2="90" y2="90"/>
+          </g>
+
+          <!-- 均值虚线区域 (等级4均值) -->
+          <polygon points="210,120 265,130 260,185 210,200 150,180 148,128"
+                   fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.4)"
+                   stroke-width="1.5" stroke-dasharray="5,3"/>
+
+          <!-- 实际数据区域 -->
+          <polygon points="210,72 286,108 274,192 210,218 138,188 134,118"
+                   fill="rgba(255,255,255,0.22)" stroke="rgba(255,255,255,0.85)"
+                   stroke-width="2"/>
+
+          <!-- 数据点 -->
+          <g fill="#fff" r="3.5">
+            <circle cx="210" cy="72" r="3.5"/>
+            <circle cx="286" cy="108" r="3.5"/>
+            <circle cx="274" cy="192" r="3.5"/>
+            <circle cx="210" cy="218" r="3.5"/>
+            <circle cx="138" cy="188" r="3.5"/>
+            <circle cx="134" cy="118" r="3.5"/>
+          </g>
+
+          <!-- 顶部标签 -->
+          <text x="210" y="25" text-anchor="middle" fill="white" font-size="14" font-weight="700">1,608</text>
+          <text x="210" y="42" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="11">创作活跃度</text>
+
+          <!-- 右上标签 -->
+          <text x="342" y="86" text-anchor="start" fill="white" font-size="14" font-weight="700">308</text>
+          <text x="342" y="103" text-anchor="start" fill="rgba(255,255,255,0.8)" font-size="11">社区成就分</text>
+
+          <!-- 右下标签 -->
+          <text x="342" y="216" text-anchor="start" fill="white" font-size="14" font-weight="700">0</text>
+          <text x="342" y="233" text-anchor="start" fill="rgba(255,255,255,0.8)" font-size="11">关注者亲密度</text>
+
+          <!-- 底部标签 -->
+          <text x="210" y="280" text-anchor="middle" fill="white" font-size="14" font-weight="700">287</text>
+          <text x="210" y="297" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="11">创作影响力</text>
+
+          <!-- 左下标签 -->
+          <text x="78" y="216" text-anchor="end" fill="white" font-size="14" font-weight="700">2,410</text>
+          <text x="78" y="233" text-anchor="end" fill="rgba(255,255,255,0.8)" font-size="11">内容优质分</text>
+
+          <!-- 左上标签 -->
+          <text x="78" y="86" text-anchor="end" fill="white" font-size="14" font-weight="700">820</text>
+          <text x="78" y="103" text-anchor="end" fill="rgba(255,255,255,0.8)" font-size="11">创作垂直度</text>
+
+          <!-- 图例 -->
+          <line x1="70" y1="320" x2="110" y2="320" stroke="rgba(255,255,255,0.85)" stroke-width="2"/>
+          <text x="116" y="324" fill="rgba(255,255,255,0.85)" font-size="10">你的创作分数值</text>
+
+          <line x1="230" y1="320" x2="270" y2="320" stroke="rgba(255,255,255,0.45)" stroke-width="1.5" stroke-dasharray="5,3"/>
+          <text x="276" y="324" fill="rgba(255,255,255,0.7)" font-size="10">同等级均值</text>
+        </svg>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <h3>📱 「开口」英语学习小程序</h3>
+      <span class="project-tag">产品实践</span>
+      <p>运用AI开发了英语口语练习的微信小程序。从产品定位、需求梳理到功能验收全链路。</p>
+      <ul>
+        <li>平台：微信小程序</li>
+        <li>涉及：产品需求文档、用户体验设计、多轮迭代反馈</li>
+      </ul>
+      <div style="margin-top: 16px;">
+        <img src="kaiqian-qrcode.png" alt="「开口」小程序二维码" style="width:180px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section section-white" id="about">
+  <div class="section-inner">
+    <h2 class="section-title reveal">关于我</h2>
+    <div class="about-text">
+      <p>入行这些年，我对"客服"这件事的认知被反复打破和重建。</p>
+      <p>早期我觉得客服就是<strong>把问题解决好、把人管好</strong>——效率、质量、满意度，三个指标跑通就对了。后来带过自营团队，也接手过外包供应商，才发现客服运营的核心矛盾不是技术问题，而是<strong>如何在成本、质量、规模三者之间找到动态平衡</strong>。自营有控制力但弹性不足，外包灵活但质量难以把控——这不是选择题，是要持续做trade-off的运营题。</p>
+      <p>真正让我重新审视这个行业的是AI。在GOAT参与AI回复项目时，我第一次意识到：<strong>AI不是来替代客服的，是来释放客服的</strong>。那些重复性高、规则明确的场景交给机器，人去做机器做不到的事——判断、共情、处理异常。这个认知转变让我意识到，经验可以被工具化、被复制。一个客服管理者的价值，也从「自己能干」变成了<strong>「能让更多人干好」</strong>。</p>
+      <p>我现在对客服行业的判断很简单：<strong>未来不属于最会省钱的外包商，也不属于最懂话术的培训师，属于那些能把人效和AI效能拧成一股绳的人</strong>。我在找这样的机会，也在成为这样的人。</p>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section section-warm" id="experience">
+  <div class="section-inner">
+    <h2 class="section-title reveal">工作经历</h2>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-period">2025.11 – 2026.03</div>
+        <div class="timeline-role">Vendor Manager</div>
+        <div class="timeline-company">
+          <img class="timeline-company-logo" src="temu-logo.png" alt="Temu logo">
+          拼多多 · 产品部
+          <button class="company-info-btn" data-company="temu" onclick="openCompanyModal('temu')">ℹ 公司简介</button>
+        </div>
+        <div class="timeline-desc">
+          <ul>
+            <li>全面管理日韩区域5个BPO外包团队的运营工作，团队规模150人</li>
+            <li>优化BPO绩效管理体系，推动热线与在线核心指标持续改善：CSAT从良好档提升至优秀档85%，质检均分90+，平均处理时效缩短2%-5%。所负责的日韩团队满意度站点内排名第一，超出站点均值3个百分点</li>
+            <li>主导BPO团队管理层招聘选拔（5-10人），达成100%到岗率</li>
+            <li>协同业务与WFM团队，负责越南新区外包管理与客服人员的招聘面试，完成约30场面试，保障新区域项目顺利上线</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-period">2019.10 – 2025.09</div>
+        <div class="timeline-role">Customer Service Manager</div>
+        <div class="timeline-company">
+          <img class="timeline-company-logo" src="goat-logo.png" alt="GOAT Group logo">
+          GOAT（高特）· 上海客服部
+          <button class="company-info-btn" data-company="goat" onclick="openCompanyModal('goat')">ℹ 公司简介</button>
+        </div>
+        <div class="timeline-desc">
+          <ul>
+            <li>0-1搭建中国客服团队（70人），从招聘、培训到流程体系建立，完成团队从无到有的建设</li>
+            <li>负责海外菲律宾外包团队（200人）的日常运营管理，服务效率、质量、客户满意度持续达标并超额完成</li>
+            <li>2022年、2024年两次获年度最高绩效评级"Above and Beyond"（5分），多次收到总监公开表扬信</li>
+            <li>人才发展与团队建设：年均参与30名候选人面试，试用期通过率90%；通过成长计划与导师机制推动团队成员晋升至质检/培训/主管岗位</li>
+            <li>发起并主导GOAT CX Ambassador项目（2023-2024），搭建15+候选人的人才梯队，获美国总部高度认可并推广至美国客服体验部门</li>
+            <li>作为AI回复项目的核心贡献者，审核标注5000+邮件样本，显著提升AI回复准确率并降低错误率</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section section-warm" id="contact">
+  <div class="section-inner">
+    <h2 class="section-title reveal">联系我</h2>
+    <p style="font-size: 0.93rem; color: var(--text-secondary); max-width: 520px; margin-bottom: 32px; line-height: 1.7;">
+      如果你在寻找一位懂客服、会用AI、还能带团队的运营管理者，欢迎联系我。
+    </p>
+    <div class="contact-info" style="text-align:center;font-size:1.05rem;line-height:2.2;color:var(--text-primary);background:#fff;border:1px solid var(--border);border-radius:10px;padding:32px;box-shadow:var(--shadow-sm);max-width:420px;margin:0 auto;">
+      <p>📧 <a href="mailto:15862341636@163.com" style="color:var(--accent);text-decoration:none;font-weight:500;">15862341636@163.com</a></p>
+      <p>💬 微信：<span style="font-weight:600;">chenamy1992</span></p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  © 2026 <span>Amy Chen</span> — 客服运营管理，AI赋能，持续进化中
+</footer>
+
+<script>
+  (function() {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -30px 0px' });
+    document.querySelectorAll('.reveal, .tool-card, .project-card, .timeline-item, .about-text p').forEach(function(el) {
+      el.classList.add('reveal');
+      observer.observe(el);
+    });
+  })();
+
+  /* ── Company Modal ── */
+  var companyData = {
+    temu: {
+      name: 'Temu',
+      tag: '拼多多旗下 · 跨境电商平台',
+      logo: 'temu-logo.png',
+      desc: '<p>Temu 是拼多多母公司 PDD Holdings 于2022年9月推出的跨境电商平台，主打极致性价比，覆盖服装、家居、电子产品、运动户外等全品类。</p><p>业务已拓展至美国、加拿大、澳大利亚、新西兰及欧洲多个市场。2023-2024年蝉联美国App Store购物类下载量第一，是全球增长最快的跨境电商平台之一。</p><p>平台采用"全托管"模式，由平台统一负责定价、营销、物流和售后，供应商只需专注生产与供货。</p>'
+    },
+    goat: {
+      name: 'GOAT',
+      tag: '全球球鞋·潮牌交易平台',
+      logo: 'goat-logo.png',
+      desc: '<p>GOAT Group 成立于2015年，总部位于美国纽约，是全球领先的球鞋与潮流服饰交易平台。旗下拥有 GOAT 和 Alias 两个品牌，服务覆盖170+国家和地区。</p><p>平台以"正品保障"为核心竞争力，每笔订单均经过专业鉴定流程，杜绝假货。2021年完成3亿美元E轮融资，估值达39亿美元。</p><p>上海客服中心负责亚太区用户服务运营，是 GOAT 全球客服体系的重要组成部分。</p>'
+    }
+  };
+
+  function openCompanyModal(key) {
+    var d = companyData[key];
+    if (!d) return;
+    document.getElementById('modal-logo').src = d.logo;
+    document.getElementById('modal-name').textContent = d.name;
+    document.getElementById('modal-tag').textContent = d.tag;
+    document.getElementById('modal-body').innerHTML = d.desc;
+    document.getElementById('company-modal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeCompanyModal() {
+    document.getElementById('company-modal').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeCompanyModal();
+  });
+</script>
+
+<!-- Company Profile Modal -->
+<div class="modal-overlay" id="company-modal" onclick="if(event.target===this)closeCompanyModal()">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeCompanyModal()" aria-label="关闭">✕</button>
+    <div class="modal-company-header">
+      <img class="modal-company-logo" id="modal-logo" src="" alt="">
+      <div>
+        <div class="modal-company-name" id="modal-name"></div>
+        <span class="modal-company-tag" id="modal-tag"></span>
+      </div>
+    </div>
+    <div class="modal-company-body" id="modal-body"></div>
+  </div>
+</div>
+
+</body>
+</html>
